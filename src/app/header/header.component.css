@@ -1,0 +1,123 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Navbar Container */
+  .navbar {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 1rem 2rem;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Logo */
+  .navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #888888;
+  }
+  
+  /* Navbar Menu */
+  .navbar-menu {
+    display: flex;
+    list-style: none;
+  }
+  
+  .navbar-item {
+    margin-left: 2rem;
+  }
+  
+  .navbar-link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  /* Hover Animation */
+  .navbar-link::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ff6f61;
+    transition: width 0.3s ease;
+  }
+  
+  .navbar-link:hover {
+    color: #ff6f61;
+  }
+  
+  .navbar-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Mobile Menu Toggle */
+  .navbar-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .navbar-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .navbar-menu {
+      position: absolute;
+      top: 60px;
+      left: -100%;
+      flex-direction: column;
+      background: #1a1a1a;
+      width: 100%;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+  
+    .navbar-menu.active {
+      left: 0;
+    }
+  
+    .navbar-item {
+      margin: 1rem 0;
+    }
+  
+    .navbar-toggle {
+      display: flex;
+    }
+  
+    .navbar-toggle.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+  
+    .navbar-toggle.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+  
+    .navbar-toggle.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  }

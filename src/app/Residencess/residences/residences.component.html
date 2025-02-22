@@ -1,0 +1,73 @@
+<h2>Liste des Résidences</h2>
+
+<!-- Search input field -->
+<input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher par adresse" class="search-input" />
+<button class="location-button" (click)="goToApartmentList()">
+  Show Apartments
+</button>
+<ul class="residence-list">
+  <li *ngFor="let residence of filteredResidences" class="residence-item">
+    <!-- Flip Card Container -->
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <!-- Front Side (Only Image) -->
+        <div class="flip-card-front">
+          <img [src]="residence.image" alt="{{ residence.name }}" class="residence-image" />
+        </div>
+        <!-- Back Side (Full Details) -->
+        <div class="flip-card-back">
+          <h3>{{ residence.name }}</h3>
+          <p class="status">
+            Status:
+            <span [ngSwitch]="residence.status" class="status-text">
+              <!-- Available Icon -->
+              <span *ngSwitchCase="'Disponible'">
+                <img src="/assets/images/checked.png" alt="Available" class="status-icon" />
+              </span>
+              <!-- Under Construction Icon -->
+              <span *ngSwitchCase="'En Construction'">
+                <img src="/assets/images/construction-banner.png" alt="Under Construction" class="status-icon" />
+              </span>
+              <!-- Sold Icon -->
+              <span *ngSwitchCase="'Vendu'">
+                <img src="/assets/images/sold.png" alt="Sold" class="status-icon" />
+              </span>
+              <!-- Unknown Icon -->
+              <span *ngSwitchDefault>
+                <img src="/assets/images/unknown.png" alt="Unknown" class="status-icon" />
+              </span>
+            </span>
+          </p>
+
+          <button class="location-button" (click)="toggleLocation(residence)">
+            Show Location
+          </button>
+
+          <p *ngIf="residence.showAddress" class="address">
+            <span *ngIf="residence.address !== 'inconnu'; else unknownAddress">
+              Adresse: {{ residence.address }}
+            </span>
+            <ng-template #unknownAddress>
+              L'adresse de cette résidence est inconnue.
+            </ng-template>
+          </p>
+
+          <!-- "Like" Button -->
+          <button class="favorite-button" (click)="toggleFavorite(residence)">
+            <span *ngIf="residence.isFavorite; else notFavorited">
+              ❤️ Added to Favorites
+            </span>
+            <ng-template #notFavorited>
+              🤍 Add to Favorites
+            </ng-template>
+          </button>
+
+          <!-- "Détails" Button -->
+          <button class="details-button" [routerLink]="['/residence-details', residence.id]">
+            Détails
+          </button>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>

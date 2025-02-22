@@ -1,0 +1,117 @@
+/* Footer Styles */
+.footer {
+    background-color: #2c2c2c; /* Dark background */
+    color: #fff; /* White text */
+    padding: 40px 20px 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-heading {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    color: #ff6f61; /* Accent color */
+  }
+  
+  .footer-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #ccc; /* Light gray text */
+  }
+  
+  .footer-links {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-links li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-link {
+    color: #ccc; /* Light gray text */
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-link:hover {
+    color: #ff6f61; /* Accent color on hover */
+  }
+  
+  .footer-contact {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-contact-item {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #ccc; /* Light gray text */
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-contact-item i {
+    margin-right: 10px;
+    color: #ff6f61; /* Accent color */
+  }
+  
+  .footer-social {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .footer-social-link {
+    color: #ccc; /* Light gray text */
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-social-link:hover {
+    color: #ff6f61; /* Accent color on hover */
+  }
+  
+  .footer-copyright {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #444; /* Light border */
+    font-size: 0.85rem;
+    color: #ccc; /* Light gray text */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .footer-section {
+      width: 100%;
+    }
+  
+    .footer-contact-item {
+      justify-content: center;
+    }
+  
+    .footer-social {
+      justify-content: center;
+    }
+  }

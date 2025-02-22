@@ -1,0 +1,73 @@
+<form [formGroup]="apartForm" (ngSubmit)="onSubmit()">
+  <!-- ApartmentNumber -->
+  <div>
+    <label for="ApartmentNumber">Apartment Number:</label>
+    <input id="ApartmentNumber" type="text" formControlName="ApartmentNumber">
+    <div *ngIf="apartForm.get('ApartmentNumber')?.invalid && apartForm.get('ApartmentNumber')?.touched" class="error-message">
+      <span *ngIf="apartForm.get('ApartmentNumber')?.errors?.['required']">Apartment Number est requis.</span>
+      <span *ngIf="apartForm.get('ApartmentNumber')?.errors?.['pattern']">Apartment Number doit contenir uniquement des chiffres.</span>
+    </div>
+  </div>
+
+  <!-- FloorNumber -->
+  <div>
+    <label for="FloorNumber">Floor Number:</label>
+    <input id="FloorNumber" type="text" formControlName="FloorNumber">
+    <div *ngIf="apartForm.get('FloorNumber')?.invalid && apartForm.get('FloorNumber')?.touched" class="error-message">
+      <span *ngIf="apartForm.get('FloorNumber')?.errors?.['required']">Floor Number est requis.</span>
+      <span *ngIf="apartForm.get('FloorNumber')?.errors?.['pattern']">Floor Number doit contenir uniquement des chiffres.</span>
+    </div>
+  </div>
+
+  <!-- Surface -->
+  <div>
+    <label for="Surface">Surface:</label>
+    <input id="Surface" type="text" formControlName="Surface">
+    <div *ngIf="apartForm.get('Surface')?.invalid && apartForm.get('Surface')?.touched" class="error-message">
+      <span *ngIf="apartForm.get('Surface')?.errors?.['required']">Surface est requis.</span>
+    </div>
+  </div>
+
+  <!-- Terrace -->
+  <div class="radio-group">
+    <label>Terrace:</label>
+    <label><input type="radio" formControlName="Terrace" value="yes"> Yes</label>
+    <label><input type="radio" formControlName="Terrace" value="no"> No</label>
+    <div *ngIf="apartForm.get('Terrace')?.invalid && apartForm.get('Terrace')?.touched" class="error-message">
+      <span *ngIf="apartForm.get('Terrace')?.errors?.['required']">Terrace est requis.</span>
+    </div>
+  </div>
+
+  <!-- SurfaceTerrace -->
+  <div>
+    <label for="SurfaceTerrace">Surface Terrace:</label>
+    <input id="SurfaceTerrace" type="text" formControlName="SurfaceTerrace">
+    <div *ngIf="apartForm.get('SurfaceTerrace')?.invalid && apartForm.get('SurfaceTerrace')?.touched" class="error-message">
+      <span *ngIf="apartForm.get('SurfaceTerrace')?.errors?.['required']">Surface Terrace est requis.</span>
+    </div>
+  </div>
+
+  <!-- Category -->
+  <div class="radio-group">
+    <label>Category:</label>
+    <label><input type="radio" formControlName="Category" value="S+1"> S+1</label>
+    <label><input type="radio" formControlName="Category" value="S+2"> S+2</label>
+    <label><input type="radio" formControlName="Category" value="S+3"> S+3</label>
+    <div *ngIf="apartForm.get('Category')?.invalid && apartForm.get('Category')?.touched" class="error-message">
+      <span *ngIf="apartForm.get('Category')?.errors?.['required']">Category est requis.</span>
+    </div>
+  </div>
+
+  <!-- Residence -->
+  <div>
+    <label for="Residence">Residence:</label>
+    <input id="Residence" type="text" formControlName="Residence">
+    <div *ngIf="apartForm.get('Residence')?.invalid && apartForm.get('Residence')?.touched" class="error-message">
+      <span *ngIf="apartForm.get('Residence')?.errors?.['required']">Residence est requis.</span>
+    </div>
+  </div>
+
+  <!-- Boutons -->
+  <button type="submit" [disabled]="apartForm.invalid">Add</button>
+  <button type="button" (click)="onReset()">Reset</button>
+</form>

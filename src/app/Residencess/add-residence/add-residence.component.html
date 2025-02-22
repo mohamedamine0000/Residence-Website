@@ -1,0 +1,61 @@
+<form [formGroup]="residenceForm" (ngSubmit)="onSubmit()">
+  <!-- Champ Nom -->
+  <div>
+    <label for="name">Nom:</label>
+    <input id="name" type="text" formControlName="name">
+    <div *ngIf="residenceForm.get('name')?.invalid && residenceForm.get('name')?.touched" class="error-message">
+      <span *ngIf="residenceForm.get('name')?.errors?.['required']">Le nom est requis.</span>
+    </div>
+  </div>
+
+  <!-- Champ Adresse -->
+  <div>
+    <label for="address">Adresse:</label>
+    <input id="address" type="text" formControlName="address">
+    <div *ngIf="residenceForm.get('address')?.invalid && residenceForm.get('address')?.touched" class="error-message">
+      <span *ngIf="residenceForm.get('address')?.errors?.['required']">L'adresse est requise.</span>
+    </div>
+  </div>
+
+  <!-- Champ Image -->
+  <div>
+    <label for="image">Image:</label>
+    <input id="image" type="file" (change)="onFileChange($event)">
+    <div *ngIf="residenceForm.get('image')?.invalid && residenceForm.get('image')?.touched" class="error-message">
+      <span *ngIf="residenceForm.get('image')?.errors?.['required']">L'image est requise.</span>
+    </div>
+  </div>
+
+  <!-- Champ Statut -->
+  <div>
+    <label for="status">Statut:</label>
+    <select id="status" formControlName="status">
+      <option value="Disponible">Available</option>
+      <option value="En Construction">Under Construction</option>
+      <option value="Vendu">Sold</option>
+    </select>
+  </div>
+
+  <!-- Champ Afficher l'adresse -->
+  <div>
+    <label for="showAddress">Afficher l'adresse:</label>
+    <input id="showAddress" type="checkbox" formControlName="showAddress">
+  </div>
+
+  <!-- Champ Favori -->
+  <div>
+    <label for="isFavorite">Favori:</label>
+    <input id="isFavorite" type="checkbox" formControlName="isFavorite">
+  </div>
+
+  <!-- Champ Description -->
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description"></textarea>
+  </div>
+
+  <!-- Boutons -->
+  <button type="submit" [disabled]="residenceForm.invalid">
+    {{ isUpdateMode ? 'Mettre à jour' : 'Ajouter' }}
+  </button>
+  <button type="button" (click)="onReset()">Réinitialiser</button>

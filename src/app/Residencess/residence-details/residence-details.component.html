@@ -1,0 +1,20 @@
+<div class="residence-details">
+  <h2>{{ residence?.name }}</h2>
+  <p><strong>Status:</strong> {{ residence?.status }}</p>
+  <p><strong>Adresse:</strong> {{ residence?.address }}</p>
+  <p><strong>Description:</strong> {{ residence?.description }}</p>
+
+  <!-- Display the residence image -->
+  <div *ngIf="residence?.image">
+    <img [src]="residence?.image" alt="{{ residence?.name }}" class="residence-image">
+  </div>
+
+  <!-- Button to go to the next residence -->
+  <button *ngIf="residence" (click)="goToNextResidence()">Next Residence</button>
+
+  <!-- Button to add a new residence -->
+  <button (click)="goToAddResidence()">Add Residence</button>
+
+  <!-- Button to update the current residence -->
+  <button *ngIf="residence" (click)="goToUpdateResidence(residence.id)">Update Residence</button>
+</div>
